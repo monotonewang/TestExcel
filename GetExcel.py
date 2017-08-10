@@ -16,8 +16,14 @@ def read_xls_file():
         try:
             for k,v in xls_data[sheet_n]:
                 try:
-                    print "\""+k+"\""+"=\""+v+"\";"
-                    log="\""+k+"\""+"=\""+v+"\";\n"
+                    b0=v.replace(' ','_')
+                    b1=b0.replace(',','')
+                    b2=b1.replace('-','')
+                    b3=b2.replace('&','')
+                    b4=b3.replace('?','')
+                    a=b4.replace('  ','')
+                    print "<string name=\""+a+"\">"+""+v+"</string>"
+                    log="<string name=\""+a+"\">"+""+v+"</string>\n"
                     logfile.write(log.encode('utf8'))
                 except Exception,e:
                     print e
